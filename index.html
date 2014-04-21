@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery and CSS Playground</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  </head>
+
+  <body>
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="clearfix">
+      <div id="background"></div>
+      <h1>Playground</h1>
+      <h2>jQuery and CSS experimentation</h2>
+
+    </header>
+    <nav>
+      <div id="menu-icon" onclick="show_menu();" onblur="show_menu();" title="Menu" tabindex="1">
+        <i class="fa fa-bars"></i>
+      </div>
+      <ul id="menu-items">
+        <li><div onclick="homepage();" title="Home">Home</div></li>
+        <li><div onclick="circles();" title="Circles">Circles</div></li>
+        <li><div onclick="spiral();" title="Spiral">Spiral</div></li>
+        <li><div onclick="leaflet();" title="Leaflet Maps">Leaflet Maps</div></li>
+      </ul>
+    </nav>
+
+    <div id="view">
+      <section>
+        <h3>Welcome to my jQuery and CSS playground.</h3>
+        <p>Here you will you find a number of little projects I've created
+          while learning and experimenting with jQuery, CSS and JavaScript
+          frameworks.
+        </p>
+        <p>The source code for the entire site is available on GitHub at:
+          <a href="https://github.com/stephen-cox/playground" target="_blank">
+            https://github.com/stephen-cox/playground
+          </a>.
+        </p>
+        <h3>Playthings:</h3>
+        <ul>
+          <li><a href="#" onclick="circles();">Circles</a>
+            - Playing with CSS circles and colours.
+          </li>
+          <li><a href="#" onclick="spiral();">Spiral</a>
+            - Logarithmic spiral created using the border-radius property.
+          </li>
+          <li><a href="#" onclick="leaflet();">Leaflet Mapping</a>
+            - A selection of maps from publicly available tile servers.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      <ul>
+        <li>
+          <a class="icon web" href="http://www.stephencox.net" target="_blank" title="Web: www.stephencox.net">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon email" href="mailto:web@stephencox.net" title="Email: web@stephencox.net">
+            <i class="fa fa-envelope "></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon twitter" href="https://twitter.com/stephen_cox_" target="_blank" title="Twitter: @stephen_cox_">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon github" href="https://github.com/stephen-cox" target="_blank" title="GitHub: stephen-cox">
+            <i class="fa fa-github-alt"></i>
+          </a>
+        </li>
+<!--        <li>
+          <div class="mirror icon copyleft" title="Copyleft Stephen Cox">&copy;</div>
+        </li>-->
+      </ul>
+    </footer>
+
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/jquery.lettering-0.6.1.min.js"></script>
+    <script src="js/vendor/lazyload.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(window).resize(window_resize);
+        $('header h1').lettering();
+      });
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
+
+  </body>
+</html>
