@@ -23,8 +23,8 @@ function init_view() {
 
     view.empty();
     view.css({
-        width: '100%',
-        height: ($(window).height() - $('header').height()) + 'px',
+        width: $(window).width(),
+        height: ($(window).height() - $('header').height()),
         margin: 0
     });
 
@@ -41,7 +41,7 @@ function window_resize() {
     view = $('#view');
     view.css({
         width: $(window).width(),
-        height: ($(window).height() - $('header').height()) + 'px'
+        height: ($(window).height() - $('header').height())
     });
     map = $('#map');
     if (map.length > 0) {
@@ -66,10 +66,10 @@ function show_menu() {
         items.css({
             'padding-top': $('header').height()
         });
-        items.animate({ width: 'toggle' }, 'slow');
+        items.animate({ width: 'show' }, 'slow');
     }
     else {
-        items.animate({ width: 'toggle' }, 'slow');
+        items.animate({ width: 'hide' }, 'slow');
         icon.removeClass('active');
     }
 }

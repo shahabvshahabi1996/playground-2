@@ -17,7 +17,6 @@ body {
  */
 header {
     position: relative;
-    width: 100%;
     border-bottom: 1px solid #0B486B;
     background: #CFF09E url(../img/header-texture.png) repeat;
     padding: 0 0 0 2em;
@@ -54,7 +53,6 @@ nav {
     top: 0;
     right: 0;
     z-index: 100;
-    width: 20em;
 }
 #menu-icon {
     position: absolute;
@@ -87,7 +85,6 @@ nav {
     border-bottom-left-radius: 1.3em;
 }
 #menu-items div {
-    width: 100%;
     padding: 0.5em 2em 0.5em 1em;
     text-align: left;
     cursor: pointer;
