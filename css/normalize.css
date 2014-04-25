@@ -82,7 +82,7 @@ button,
 input,
 select,
 textarea {
-    font-family: sans-serif;
+    font-family: 'Droid Sans', 'sans-serif';
 }
 
 /**
@@ -127,21 +127,25 @@ a:hover {
 h1 {
     font-size: 2em;
     margin: 0.67em 0;
+    font-family: 'Bitter', 'serif';
 }
 
 h2 {
     font-size: 1.5em;
     margin: 0.83em 0;
+    font-family: 'Raleway', 'sans-serif';
 }
 
 h3 {
     font-size: 1.17em;
     margin: 1em 0;
+    font-family: 'Raleway', 'sans-serif';
 }
 
 h4 {
     font-size: 1em;
     margin: 1.33em 0;
+    font-family: 'Raleway', 'sans-serif';
 }
 
 h5 {
