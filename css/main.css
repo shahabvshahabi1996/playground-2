@@ -19,7 +19,7 @@ header {
     position: relative;
     border-bottom: 1px solid #0B486B;
     background: #CFF09E url(../img/header-texture.png) repeat;
-    padding: 0 0 0 2em;
+    padding: 0 0 0 5%;
     line-height: 1.2;
 }
 header h1,
@@ -42,7 +42,7 @@ header h2 {
 header h1 .char1 {
     font-size: 60pt;
     float: left;
-    line-height: 0.75;
+    line-height: 0.76;
 }
 
 /**
@@ -151,6 +151,7 @@ footer .copyleft {
 #view section {
     width: 90%;
     margin: 0 5% 5em 5%;
+    padding: 0;
 }
 
 
@@ -192,6 +193,23 @@ footer .copyleft {
     border-left: 1px solid #000;
     border-bottom-left-radius: 100%;
 }
+
+/* ==========================================================================
+   Controls
+   ========================================================================== */
+.controls {
+    z-index: 100;
+    padding: 1em;
+}
+.controls input[type=range] {
+    vertical-align: middle;
+    border: 1px solid #c3c3c3;
+    margin: 0.2em 0;
+}
+.controls .value {
+    color: #888;
+}
+
 
 /* ==========================================================================
    Browse Happy prompt

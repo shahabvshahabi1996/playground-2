@@ -23,9 +23,10 @@ function init_view() {
 
     view.empty();
     view.css({
-        width: $(window).width(),
-        height: ($(window).height() - $('header').height()),
-        margin: 0
+        width: $(window).width() - 10,
+        height: Math.floor($(window).height() - $('header').height() - 10),
+        margin: 0,
+        padding: 0
     });
 
     return view;
@@ -143,49 +144,62 @@ function circles() {
 /**
  * Draw Spiral
  */
-function spiral(ratio) {
+function spiral(decay, depth) {
 
-    var view, arc, top, left, scale;
+    var view, arc, top, left, size;
 
-    ratio = ratio || 1.618;
     view = init_view();
+    decay = Number(decay) || 1.62;
+    depth = Number(depth) || 4;
     top = 10;
     left = 10;
-    if (view.width() < view.height())
-        scale = (view.width() / ratio) - 20;
-    else
-        scale = view.height() - 20;
 
-    for (var i = 0; i < 4; i++) {
+    if (view.width() < decay * view.height())
+        size = ((view.width() * decay) / (1 + decay)) - 10;
+    else {
+        size = ((view.height() * decay * decay) / (1 +  decay)) - 20;
+    }
+
+    for (var i = 0; i < depth; i++) {
 
         // Top-left
-        arc = make_div(left, top, scale, scale, 'spiral-tl-'+i, 'arc arc-top-left');
+        arc = make_div(left, top, size, size, 'spiral-tl-'+i, 'arc arc-top-left');
         arc.appendTo(view);
 
         // Top-right
-        left += scale;
-        scale /= ratio;
-        arc = make_div(left, top, scale, scale, 'spiral-tr-'+i, 'arc arc-top-right');
+        left += size;
+        size /= decay;
+        arc = make_div(left, top, size, size, 'spiral-tr-'+i, 'arc arc-top-right');
         arc.appendTo(view);
 
         // Bottom-right
-        top += scale;
-        left += scale - (scale / ratio);
-        scale /= ratio;
-        arc = make_div(left, top, scale, scale, 'spiral-br-'+i, 'arc arc-bottom-right');
+        top += size;
+        left += size - (size / decay);
+        size /= decay;
+        arc = make_div(left, top, size, size, 'spiral-br-'+i, 'arc arc-bottom-right');
         arc.appendTo(view);
 
         // Bottom-left
-        top += scale - (scale / ratio);
-        scale /= ratio;
-        left -= scale;
-        arc = make_div(left, top, scale, scale, 'spiral-bl-'+i, 'arc arc-bottom-left');
+        top += size - (size / decay);
+        size /= decay;
+        left -= size;
+        arc = make_div(left, top, size, size, 'spiral-bl-'+i, 'arc arc-bottom-left');
         arc.appendTo(view);
 
         // Top-left
-        scale /= ratio;
-        top -= scale;
+        size /= decay;
+        top -= size;
+
+        // No need to continue if size is less than a pixel
+        if (size < 0)
+            break;
     }
+
+    // Attach slider controls
+    view.append('<div class="controls">' +
+          'Decay: 1 <input type="range" min="1" max="2" value="'+decay+'" step="0.01" name="decay" id="decay" onchange="spiral($(this).val(), '+depth+');" /> 2 <span class="value">('+decay+')</span><br />' +
+          'Depth: 1 <input type="range" min="1" max="40" value="'+depth+'" step="1" name="depth" id="depth" onchange="spiral('+decay+', $(this).val());" /> 40 <span class="value">('+depth+')</span><br />' +
+        '</div>');
 }
 
 /**
