@@ -31,10 +31,12 @@
         <i class="fa fa-bars"></i>
       </div>
       <ul id="menu-items">
-        <li><div onclick="homepage();" title="Home">Home</div></li>
-        <li><div onclick="circles();" title="Circles">Circles</div></li>
-        <li><div onclick="spiral();" title="Spiral">Spiral</div></li>
-        <li><div onclick="leaflet();" title="Leaflet Maps">Leaflet Maps</div></li>
+        <li><a href="#homepage" onclick="homepage();" title="Home">Home</a></li>
+<!--        <li><div onclick="bouncing_balls();" title="Bouncing Balls">Bouncing Balls</div></li>-->
+        <li><a href="#circles" onclick="circles();" title="Circles">Circles</a></li>
+        <li><a href="#leaflet" onclick="leaflet();" title="Leaflet Maps">Leaflet Maps</a></li>
+        <li><a href="#spiral" onclick="spiral();" title="Spiral">Spiral</a></li>
+        <li><a href="#swarm" onclick="swarm();" title="Swarm">Swarm</a></li>
       </ul>
     </nav>
 
@@ -52,14 +54,19 @@
         </p>
         <h3>Playthings:</h3>
         <ul>
-          <li><a href="#" onclick="circles();">Circles</a>
+<!--          <li><a href="#" onclick="bouncing_balls();">Bouncing Balls</a>-->
+          </li>
+          <li><a href="#circles" onclick="circles();">Circles</a>
             - Playing with CSS circles and colours.
           </li>
-          <li><a href="#" onclick="spiral();">Spiral</a>
+          <li><a href="#leaflet" onclick="leaflet();">Leaflet Mapping</a>
+            - A selection of maps from publicly available tile servers.
+          </li>
+          <li><a href="#spiral" onclick="spiral();">Spiral</a>
             - Logarithmic spiral created using the border-radius property.
           </li>
-          <li><a href="#" onclick="leaflet();">Leaflet Mapping</a>
-            - A selection of maps from publicly available tile servers.
+          <li><a href="#swarm" onclick="swarm();" title="Swarm">Swarm</a>
+            - Swarming animation
           </li>
         </ul>
       </section>
@@ -102,6 +109,10 @@
       $(document).ready(function() {
         $(window).resize(window_resize);
         $('header h1').lettering();
+        init_page();
+      });
+      $(window).on('hashchange',function(){
+        init_page();
       });
     </script>
 

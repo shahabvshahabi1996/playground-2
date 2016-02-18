@@ -84,14 +84,17 @@ nav {
     color: #A8DBA8;
     border-bottom-left-radius: 1.3em;
 }
-#menu-items div {
+#menu-items a {
+    display: block;
     padding: 0.5em 2em 0.5em 1em;
     text-align: left;
     cursor: pointer;
     white-space: nowrap;
+    color: #FFF;
+    text-decoration: none;
 }
-#menu-items div:focus,
-#menu-items div:hover {
+#menu-items a:focus,
+#menu-items a:hover {
     background-color: #0e6086;
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;

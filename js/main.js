@@ -10,9 +10,24 @@ var home_content;
 // Variable for Leaflet map
 var map_content;
 
+
+/**
+ * Initialise page, calling function depending on URL hash value
+ */
+function init_page() {
+
+  var hash = window.location.hash.substring(1);
+  if (hash in window)
+    window[hash]();
+  else
+    homepage();
+}
+
 /**
  * Initialise view ready to start drawing elements.
  * Returns jQuery div with id view.
+
+ * @return  {HTMLElement}
  */
 function init_view() {
 
@@ -23,8 +38,8 @@ function init_view() {
 
     view.empty();
     view.css({
-        width: $(window).width() - 10,
-        height: Math.floor($(window).height() - $('header').height() - 10),
+        width: '100%',
+        height: Math.floor($(window).height() - $('header').height()) - 6,
         margin: 0,
         padding: 0
     });
@@ -76,7 +91,15 @@ function show_menu() {
 }
 
 /**
- * Create a div element
+ * Create an absolutely positioned div element
+ *
+ * @param   {Number}    left    Coordinate of the left edge
+ * @param   {Number}    top     Coordinate of the top edge
+ * @param   {Number}    width   Width of element
+ * @param   {Number}    height  Height of element
+ * @param   {String}    id      ID of the div
+ * @param   {String}    classes Classes for the div
+ * @return  {HTMLElement}
  */
 function make_div(left, top, width, height, id, classes) {
 
@@ -112,6 +135,24 @@ function homepage() {
 
 
 /**
+ * Draw canvas
+ */
+function swarm() {
+
+  var view;
+
+  view = init_view();
+  $('<canvas>').attr({
+    id: 'swarm'
+  }).css({
+    width: '100%',
+    height: '100%'
+  }).appendTo(view);
+
+  LazyLoad.js('js/swarm.js');
+}
+
+/**
  * Draw Circles
  */
 function circles() {
@@ -143,6 +184,9 @@ function circles() {
 
 /**
  * Draw Spiral
+ *
+ * @param   {Number}    decay   Decay ratio for the spiral
+ * @param   {Number}    depth   Number of rotations to drawe
  */
 function spiral(decay, depth) {
 
@@ -200,6 +244,23 @@ function spiral(decay, depth) {
           'Decay: 1 <input type="range" min="1" max="2" value="'+decay+'" step="0.01" name="decay" id="decay" onchange="spiral($(this).val(), '+depth+');" /> 2 <span class="value">('+decay+')</span><br />' +
           'Depth: 1 <input type="range" min="1" max="40" value="'+depth+'" step="1" name="depth" id="depth" onchange="spiral('+decay+', $(this).val());" /> 40 <span class="value">('+depth+')</span><br />' +
         '</div>');
+}
+
+/**
+ * Bouncing balls
+ */
+function bouncing_balls() {
+
+    var view, ball, balls;
+
+    view = init_view();
+    /*ball = {
+        x = Math.floor((Math.random() * (view.width() - size))),
+        y = Math.floor((Math.random() * (view.height() - size))),
+        colour: 'hsl('+Math.floor(360 * Math.random() +1)+', 100%, 75%)'
+
+    }*/
+
 }
 
 /**
