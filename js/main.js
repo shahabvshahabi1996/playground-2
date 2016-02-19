@@ -10,15 +10,24 @@ var home_content;
 // Variable for Leaflet map
 var map_content;
 
+// Interval ID
+var interval = null;
 
 /**
  * Initialise page, calling function depending on URL hash value
  */
 function init_page() {
 
+  if (interval) {
+    console.log(interval);
+    clearInterval(interval);
+    interval = null;
+  }
+
   var hash = window.location.hash.substring(1);
-  if (hash in window)
+  if (hash.toString() in window) {
     window[hash]();
+  }
   else
     homepage();
 }
@@ -143,10 +152,9 @@ function swarm() {
 
   view = init_view();
   $('<canvas>').attr({
-    id: 'swarm'
-  }).css({
-    width: '100%',
-    height: '100%'
+    id: 'swarm',
+    width: view.width(),
+    height: view.height()
   }).appendTo(view);
 
   LazyLoad.js('js/swarm.js');
