@@ -21,7 +21,7 @@ function Swarm() {
   // Swarm members
   this.members = [];
   for (var i = 0; i < COUNT; i++) {
-    this.members.push(new Swarmer(this, RADIUS, SPEED));
+    this.members.push(new Swarmer(this, i, RADIUS, SPEED));
   }
 
   // Mouse position
@@ -53,9 +53,10 @@ Swarm.prototype.run = function() {
 /**
  * Swarmer object
  */
-function Swarmer(swarm, radius, speed) {
+function Swarmer(swarm, id, radius, speed) {
 
   this.swarm = swarm;
+  this.id = id;
   this.radius = radius;
   this.speed = speed;
 
