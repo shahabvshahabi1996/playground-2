@@ -7,13 +7,13 @@
 
 var COUNT = 50;
 var RADIUS = 4;
-var SPEED = 1;
+var SPEED = 2;
 var MASS = 500;
 
 // Swarm effect boundaries
 var MULTIPLIER = 2;
 var INNER_BOUNDARY = 100;
-var OUTER_BOUNDARY = 500;
+var OUTER_BOUNDARY = 1000;
 
 /**
  * Swarm animation object
@@ -68,6 +68,7 @@ function Swarmer(swarm, id, radius, speed, mass) {
   this.speed2 = speed * speed;
   this.mass = mass;
   this.moment = 1 / mass;
+  this.colour = '#000000';
 
   // Location and velocity
   this.x = radius + Math.random() * (this.swarm.canvas.width() - radius);
@@ -82,6 +83,7 @@ function Swarmer(swarm, id, radius, speed, mass) {
  */
 Swarmer.prototype.draw = function() {
 
+  this.swarm.context.fillStyle = this.colour;
   this.swarm.context.beginPath();
   this.swarm.context.arc(this.x , this.y, this.radius, 0, 2*Math.PI, true);
   this.swarm.context.closePath();
@@ -117,6 +119,7 @@ Swarmer.prototype.move = function() {
   }
 
   // Calculate force from other swarm members
+  this.colour = '#000000';
   for (var i = 0; i < this.swarm.members.length; i++) {
     if (this.id != i) {
       var effect = this.swarm_effect(this.swarm.members[i]);
@@ -161,7 +164,10 @@ Swarmer.prototype.swarm_effect = function(other) {
 
   // Calculate magnitude of effect
   if (distance < INNER_BOUNDARY) {
-    effect = -10 * MULTIPLIER * (INNER_BOUNDARY - distance) / INNER_BOUNDARY;
+    effect = -20 * MULTIPLIER * (INNER_BOUNDARY - distance) / INNER_BOUNDARY;
+    if (distance < 0.1 * INNER_BOUNDARY) {
+      this.colour = '#FF0000';
+    }
   }
   else if (distance > INNER_BOUNDARY && distance < OUTER_BOUNDARY) {
     effect = MULTIPLIER * (OUTER_BOUNDARY - distance) / OUTER_BOUNDARY;
@@ -175,68 +181,6 @@ Swarmer.prototype.swarm_effect = function(other) {
   ox = effect * normaliser * ox;
   oy = effect * normaliser * oy;
   return [ox, oy];
-};
-
-/**
- * Swarm leader object
- */
-function SwarmLeader(radius, speed) {
-
-  this.canvas = $('#swarm');
-  this.context = this.canvas[0].getContext("2d");
-
-  this.radius = radius;
-  this.speed = speed;
-
-  // Location and velocity
-  this.x = radius + Math.random() * (this.canvas.width() - radius);
-  this.y = radius + Math.random() * (this.canvas.height() -  radius);
-  var direction = 2*Math.PI * Math.random();
-  this.dx = speed * Math.cos(direction);
-  this.dy = speed * Math.sin(direction);
-
-  // Mouse position
-  this.mouse_x = -1;
-  this.mouse_y = -1;
-  this.canvas.mousemove(function(event) {
-    this.mouse_x = event.pageX;
-    this.mouse_y = event.pageY;
-  }.bind(this));
-  this.canvas.mouseleave(function() {
-    this.mouse_x = -1;
-    this.mouse_y = -1;
-  }.bind(this));
-}
-
-/**
- * SwarmLeader inherits from Swarmer
- */
-SwarmLeader.prototype = Object.create(Swarmer.prototype);
-
-/**
- * Move swarm leader
- */
-SwarmLeader.prototype.move = function() {
-
-  if (this.mouse_x != -1 && this.mouse_y != -1) {
-    var vx = this.mouse_x - this.x;
-    var vy = this.mouse_y - this.y;
-    var normaliser = this.speed / Math.sqrt(vx * vx + vy * vy);
-    this.dx = 0.995 * this.dx + 0.006 * vx * normaliser;
-    this.dy = 0.995 * this.dy + 0.006 * vy * normaliser;
-  }
-
-  if (Math.round(this.x + this.dx + this.radius) > this.canvas.width()
-      || Math.round(this.x + this.dx - this.radius) < 0) {
-    this.dx = -1 * this.dx;
-  }
-  if (Math.round(this.y + this.dy + this.radius)  > this.canvas.height()
-      || Math.round(this.y + this.dy - this.radius) < 0) {
-    this.dy = -1 * this.dy;
-  }
-
-  this.x += this.dx;
-  this.y += this.dy;
 };
 
 
