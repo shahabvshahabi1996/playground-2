@@ -13,6 +13,7 @@ function Swarm() {
   // Canvas and Window objects
   this.canvas = $('#swarm');
   this.context = this.canvas[0].getContext("2d");
+  this.interval = interval;
 
   // Configuration object
   this.config = new SwarmConfig();
@@ -55,7 +56,7 @@ Swarm.prototype.run = function() {
 Swarm.prototype.start = function() {
 
   // Start the animation
-  interval = setInterval(function () {
+  this.interval = interval = setInterval(function () {
     this.run();
   }.bind(this), 10);
 };
@@ -65,7 +66,7 @@ Swarm.prototype.start = function() {
  */
 Swarm.prototype.stop = function() {
 
-  clearInterval(interval);
+  clearInterval(this.interval);
 };
 
 /**
