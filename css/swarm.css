@@ -1,0 +1,99 @@
+#swarm-control {
+  padding: 10px;
+  background-color: rgba(222, 222, 222, 0.3);
+  border: #c0c0c0;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#swarm-control fieldset {
+  margin: 10px 0;
+}
+
+#swarm-control fieldset:first-child {
+  margin-top: 0;
+}
+
+#swarm-control label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#swarm-control .control {
+
+}
+
+#swarm-control .name,
+#swarm-control .value
+#swarm-control .input {
+  display: inline-block;
+  float: left;
+  clear: left;
+}
+
+#swarm-control .name {
+  margin-top: 6px;
+}
+
+#swarm-control .value {
+  margin-right: 20px;
+}
+
+#swarm-control .swarm-controls .name {
+  width: 60px;
+}
+
+#swarm-control .algorithm .name {
+  width: 130px;
+}
+
+#swarm-control .display .name{
+  width: 160px;
+}
+
+#swarm-control .display .name{
+  width: 160px;
+}
+
+#swarm-control .mouse .name {
+  width: 130px;
+}
+
+#swarm-control .acceleration .name {
+  width: 180px;
+}
+
+#swarm-control .stop-start {
+  text-align: center;
+}
+
+#swarm-control input[type="button"] {
+  margin: 10px;
+  padding: 5px 10px;
+}
+
+#swarm-control input[type="range"] {
+  background-color: #FFF;
+}
+
+#swarm-control input[type="text"] {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#swarm-control input[type="checkbox"] {
+  margin-top: 8px;
+}
+
+#swarm-control .min-max {
+  padding-bottom: 5px;
+  font-size: 10px;
+  color: #999;
+}
+
+#swarm-control select {
+  height: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

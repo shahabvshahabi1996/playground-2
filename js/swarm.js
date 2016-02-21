@@ -332,30 +332,30 @@ SwarmConfig.prototype.draw = function() {
 
   var control_panel = ' \
 <div id="swarm-control" style="position: absolute; top: 10px; left: 10px"> \
-  <fieldset>\
+  <fieldset class="swarm-controls">\
     <label>Swarm controls</label> \
     <div class="control range"> \
       <span class="name">Count:</span> \
-      <input class="value" id="count" type="text" value="'+this.count+'" size="5" />\
-      <span c1ass="input">1<input type="range" min="1" max="200" value="'+this.count+'" oninput="$(\'#count\').val(this.value);" />200</span> \
+      <input class="value" id="count" type="text" value="'+this.count+'" size="3" />\
+      <span c1ass="input"><span class="min-max">1</span><input type="range" min="1" max="200" value="'+this.count+'" oninput="$(\'#count\').val(this.value);" /><span class="min-max">200</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Radius:</span> \
-      <input class="value" id="radius" type="text" value="'+this.radius+'" size="5" />\
-      <span c1ass="input">1<input type="range" min="1" max="10" value="'+this.radius+'" oninput="$(\'#radius\').val(this.value);" />10</span> \
+      <input class="value" id="radius" type="text" value="'+this.radius+'" size="3" />\
+      <span c1ass="input"><span class="min-max">1</span><input type="range" min="1" max="10" value="'+this.radius+'" oninput="$(\'#radius\').val(this.value);" /><span class="min-max">10</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Speed:</span> \
-      <input class="value" id="speed" type="text" value="'+this.speed+'" size="5" />\
-      <span c1ass="input">0<input type="range" min="0" max="10" step="0.1" value="'+this.speed+'" oninput="$(\'#speed\').val(this.value);" />10</span> \
+      <input class="value" id="speed" type="text" value="'+this.speed+'" size="3" />\
+      <span c1ass="input"><span class="min-max">0</span><input type="range" min="0" max="10" step="0.1" value="'+this.speed+'" oninput="$(\'#speed\').val(this.value);" /><span class="min-max">10</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Mass:</span> \
-      <input class="value" id="mass" type="text" value="'+this.mass+'" size="5" />\
-      <span c1ass="input">1<input type="range" min="1" max="1000" step="1" value="'+this.mass+'" oninput="$(\'#mass\').val(this.value);" />1000</span> \
+      <input class="value" id="mass" type="text" value="'+this.mass+'" size="3" />\
+      <span c1ass="input"><span class="min-max">1</span><input type="range" min="1" max="1000" step="1" value="'+this.mass+'" oninput="$(\'#mass\').val(this.value);" /><span class="min-max">1000</span></span> \
     </div> \
   </fieldset> \
-  <fieldset> \
+  <fieldset class="algorithm"> \
     <label>Algorithm settings</label> \
     <div class="control"> \
       <span class="name">Swarm algorithm:</span> \
@@ -367,45 +367,26 @@ SwarmConfig.prototype.draw = function() {
     </div>\
     <div class="control range"> \
       <span class="name">Repulsion radius:</span> \
-      <input class="value" id="repel_boundary" type="text" value="'+this.repel_boundary+'" size="5" />\
-      <span c1ass="input">1<input type="range" min="1" max="500" step="1" value="'+this.repel_boundary+'" oninput="$(\'#repel_boundary\').val(this.value);" />500</span> \
+      <input class="value" id="repel_boundary" type="text" value="'+this.repel_boundary+'" size="3" />\
+      <span c1ass="input"><span class="min-max">1</span><input type="range" min="1" max="500" step="1" value="'+this.repel_boundary+'" oninput="$(\'#repel_boundary\').val(this.value);" /><span class="min-max">500</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Attraction radius:</span> \
-      <input class="value" id="attract_boundary" type="text" value="'+this.attract_boundary+'" size="5" />\
-      <span c1ass="input">1<input type="range" min="1" max="1000" step="1" value="'+this.attract_boundary+'" oninput="$(\'#attract_boundary\').val(this.value);" />1000</span> \
+      <input class="value" id="attract_boundary" type="text" value="'+this.attract_boundary+'" size="3" />\
+      <span c1ass="input"><span class="min-max">1</span><input type="range" min="1" max="1000" step="1" value="'+this.attract_boundary+'" oninput="$(\'#attract_boundary\').val(this.value);" /><span class="min-max">1000</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Repulsion value:</span> \
-      <input class="value" id="repel_force" type="text" value="'+this.repel_force+'" size="5" />\
-      <span c1ass="input">-40<input type="range" min="-40" max="0" step="-0.1" value="'+this.repel_force+'" oninput="$(\'#repel_force\').val(this.value);" />0</span> \
+      <input class="value" id="repel_force" type="text" value="'+this.repel_force+'" size="3" />\
+      <span c1ass="input"><span class="min-max">-40</span><input type="range" min="-40" max="0" step="-0.1" value="'+this.repel_force+'" oninput="$(\'#repel_force\').val(this.value);" /><span class="min-max">0</span></span> \
     </div> \
     <div class="control range"> \
       <span class="name">Attraction value:</span> \
-      <input class="value" id="attract_force" type="text" value="'+this.attract_force+'" size="5" />\
-      <span c1ass="input">0<input type="range" min="0" max="10" step="0.1" value="'+this.attract_force+'" oninput="$(\'#attract_force\').val(this.value);" />10</span> \
+      <input class="value" id="attract_force" type="text" value="'+this.attract_force+'" size="3" />\
+      <span c1ass="input"><span class="min-max">0</span><input type="range" min="0" max="10" step="0.1" value="'+this.attract_force+'" oninput="$(\'#attract_force\').val(this.value);" /><span class="min-max">10</span></span> \
     </div> \
   </fieldset> \
-  <fieldset> \
-    <label>Display settings</label> \
-    <div class="control"> \
-      <span class="name">Display velocity vector:</span> \
-      <input class="value" id="show_direction" type="checkbox" value="1"'+(this.show_direction ? ' checked' : '')+' />\
-    </div> \
-  </fieldset> \
-  <fieldset> \
-    <label>Mouse settings</label> \
-    <div class="control"> \
-      <span class="name">Follow mouse:</span> \
-      <input class="value" id="follow_mouse" type="checkbox" value="1"'+(this.follow_mouse ? ' checked' : '')+' />\
-    </div> \
-    <div class="control range"> \
-      <span class="name">Mouse attraction:</span> \
-      <input class="value" id="mouse_force" type="text" value="'+this.mouse_force+'" size="3" />\
-      <span c1ass="input">0<input type="range" min="0" max="10" step="0.1" value="'+this.mouse_force+'" oninput="$(\'#mouse_force\').val(this.value);" />10</span> \
-    </div> \
-  </fieldset> \
-  <fieldset> \
+  <fieldset class="acceleration"> \
     <label>Acceleration settings</label> \
     <div class="control"> \
       <span class="name">Dampen (add resistance):</span> \
@@ -416,10 +397,29 @@ SwarmConfig.prototype.draw = function() {
       <input class="value" id="speed_up" type="checkbox" value="1"'+(this.speed_up ? ' checked' : '')+' />\
     </div> \
   </fieldset> \
+  <fieldset class="display"> \
+    <label>Display settings</label> \
+    <div class="control"> \
+      <span class="name">Display velocity vector:</span> \
+      <input class="value" id="show_direction" type="checkbox" value="1"'+(this.show_direction ? ' checked' : '')+' />\
+    </div> \
+  </fieldset> \
+  <fieldset class="mouse"> \
+    <label>Mouse settings</label> \
+    <div class="control"> \
+      <span class="name">Follow mouse:</span> \
+      <input class="value" id="follow_mouse" type="checkbox" value="1"'+(this.follow_mouse ? ' checked' : '')+' />\
+    </div> \
+    <div class="control range"> \
+      <span class="name">Mouse attraction:</span> \
+      <input class="value" id="mouse_force" type="text" value="'+this.mouse_force+'" size="3" />\
+      <span c1ass="input"><span class="min-max">0</span><input type="range" min="0" max="10" step="0.1" value="'+this.mouse_force+'" oninput="$(\'#mouse_force\').val(this.value);" /><span class="min-max">10</span></span> \
+    </div> \
+  </fieldset> \
   <div class="stop-start"> \
     <input type="button" id="swarm-start" value="Start" onclick="animation.start();" /> \
     <input type="button" id="swarm-sop" value="Stop" onclick="animation.stop();" /> \
-    <input type="button" id="swarm-reset" value="Reset" onclick="animation.reset();" /> \
+    <input type="button" id="swarm-reset" value="Restart" onclick="animation.reset();" /> \
   </div>\
 </div>';
 

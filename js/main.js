@@ -157,6 +157,7 @@ function swarm() {
     height: view.height()
   }).appendTo(view);
 
+  LazyLoad.css('css/swarm.css');
   LazyLoad.js('js/swarm.js');
 }
 
